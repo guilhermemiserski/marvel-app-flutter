@@ -19,23 +19,54 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+          )
+        ],
+        centerTitle: true,
+        title: Image.asset(
+          'images/logo.png',
+          width: 150,
+          height: 150,
+        ),
+      ),
       body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+          ),
           itemCount: _listaHerois.length,
           itemBuilder: (BuildContext ctx, index) {
             return Column(
               children: [
-                Image(
-                  image: NetworkImage(
-                      _listaHerois[index].thumbnail!.path! + ".jpg"),
-                  width: 100,
-                  height: 100,
-                ),
-                Text('${_listaHerois[index].name}')
+                Card(
+                  child: Container(
+                    height: 475,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            _listaHerois[index].thumbnail!.path! + ".jpg"),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        '${_listaHerois[index].name}',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  margin: const EdgeInsets.only(
+                      left: 10, right: 10, top: 10, bottom: 10),
+                )
               ],
             );
           }),
@@ -43,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _buscaHerois() async {
-    _listaHerois = await ConsumindoAPI.getCharacters('Spider');
+    _listaHerois = await ConsumindoAPI.getCharacters('Hulk');
     setState(() {
       _listaHerois;
     });
