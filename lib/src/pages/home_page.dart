@@ -101,10 +101,12 @@ class MySearchDelegate extends SearchDelegate {
             if (query.isEmpty) {
               close(context, null);
             } else {
-              query = '';
+              heroiPesquisado = query;
+              close(context, null);
+              showResults(context);
             }
           },
-          icon: const Icon(Icons.close))
+          icon: const Icon(Icons.search))
     ];
   }
 
@@ -137,6 +139,7 @@ class MySearchDelegate extends SearchDelegate {
       'Star-lord'
     ];
     return ListView.builder(
+      controller: ScrollController(),
       itemCount: sugestoes.length,
       itemBuilder: (context, index) {
         final sugestao = sugestoes[index];
