@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Heróis',
+      title: 'Marvel',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(color: Color(0xFFF0131E)),
         primarySwatch: Colors.red,
