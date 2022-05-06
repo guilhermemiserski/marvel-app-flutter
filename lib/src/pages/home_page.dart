@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:marvel_api/src/models/character.dart';
 import '../controller/consumindoAPI.dart';
 
-List<Character> listaHerois = [];
-String heroiPesquisado = 'Hulk';
-
 class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
+List<Character> listaHerois = [];
+String heroiPesquisado = 'Hulk';
 
 class _MyHomePageState extends State<MyHomePage> {
   @override

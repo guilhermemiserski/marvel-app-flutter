@@ -11,7 +11,7 @@ class ConsumindoAPI {
     String interpolacao = '$ts$apiPrivate$apiPublic';
     var hash = md5.convert(utf8.encode(interpolacao)).toString();
     String url =
-        'http://gateway.marvel.com/v1/public/characters?nameStartsWith=$nomeHeroi&ts=$ts&apikey=$apiPublic&hash=$hash';
+        'http://gateway.marvel.com/v1/public/characters?nameStartsWith=$nomeHeroi&limit=5&ts=$ts&apikey=$apiPublic&hash=$hash';
     Uri uri = Uri.parse(url);
     var response = await http.get(uri);
     var json = jsonDecode(response.body)['data']['results'];
